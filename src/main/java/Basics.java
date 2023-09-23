@@ -26,5 +26,8 @@ public class Basics {
                 .when().post("maps/api/place/add/json")
                 .then().log().all().assertThat().statusCode(200).body("scope", equalTo("APP"))
                 .header("server", "Apache/2.4.52 (Ubuntu)");
+
+        // Add place -> Update Place with new address -> Get Place to validate if new address is present in response.
+
     }
 }
