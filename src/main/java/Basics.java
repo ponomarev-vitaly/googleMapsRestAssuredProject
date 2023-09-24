@@ -24,13 +24,28 @@ public class Basics {
         System.out.println(placeId);
 
         // Add place -> Update Place with new address -> Get Place to validate if new address is present in response.
+        String newAddress = "70 Summer walk, USA";
         given().log().all().queryParam("key", "qaclick123").header("Content-Type", "application/json")
                 .body("{\n" +
                         "\"place_id\":\""+placeId+"\",\n" +
-                        "\"address\":\"70 Summer walk, USA\",\n" +
+                        "\"address\":\""+newAddress+"\",\n" +
                         "\"key\":\"qaclick123\"\n" +
                         "}")
                 .when().put("maps/api/place/update/json")
                 .then().assertThat().log().all().statusCode(200).body("msg", equalTo("Address successfully updated"));
+
+        //Get place
+        String getPlaceResponse = given().log().all().queryParam("key", "qaclick123")
+        .queryParam("place_id", placeId)
+        .when().get("maps/api/place/get/json")
+        .then().assertThat().log().all().statusCode(200).extract().response().asString();
+
+        JsonPath js1 = new JsonPath(getPlaceResponse);
+        String actualAddress = js1.getString("address");
+        System.out.println(actualAddress);
+
+        //Cucumber Junit, TestNG
+
+
     }
 }
