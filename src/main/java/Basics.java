@@ -1,5 +1,7 @@
 import files.Payload;
 import io.restassured.RestAssured;
+import io.restassured.path.json.JsonPath;
+
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
 
@@ -16,6 +18,10 @@ public class Basics {
                 .extract().response().asString(); // Extract the response in String format.
 
         System.out.println(response);
+        JsonPath js = new JsonPath(response); // Convert the String into Json format, for parsing Json.
+        String placeId = js.getString("place_id");
+
+        System.out.println(placeId);
 
         // Add place -> Update Place with new address -> Get Place to validate if new address is present in response.
     }
