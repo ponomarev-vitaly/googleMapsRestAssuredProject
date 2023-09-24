@@ -24,5 +24,13 @@ public class Basics {
         System.out.println(placeId);
 
         // Add place -> Update Place with new address -> Get Place to validate if new address is present in response.
+        given().log().all().queryParam("key", "qaclick123").header("Content-Type", "application/json")
+                .body("{\n" +
+                        "\"place_id\":\""+placeId+"\",\n" +
+                        "\"address\":\"70 Summer walk, USA\",\n" +
+                        "\"key\":\"qaclick123\"\n" +
+                        "}")
+                .when().put("maps/api/place/update/json")
+                .then().assertThat().log().all().statusCode(200).body("msg", equalTo("Address successfully updated"));
     }
 }
