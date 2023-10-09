@@ -9,5 +9,8 @@ public class ComplexJsonParse {
         // Print number of courses returned by API
         int count = js.getInt("courses.size()");
         System.out.println(count);
+        // Print Purchase amount.
+        int totalAmount = js.getInt("dashboard.purchaseAmount");
+        System.out.println(totalAmount);
     }
 }
