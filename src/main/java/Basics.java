@@ -27,7 +27,9 @@ public class Basics {
 
         // Add place -> Update Place with new address -> Get Place to validate if new address is present in response.
         String newAddress = "70 Summer walk, USA";
-        given().log().all().queryParam("key", "qaclick123").header("Content-Type", "application/json")
+        given().log().all()
+                .queryParam("key", "qaclick123")
+                .header("Content-Type", "application/json")
                 .body("{\n" +
                         "\"place_id\":\""+placeId+"\",\n" +
                         "\"address\":\""+newAddress+"\",\n" +
