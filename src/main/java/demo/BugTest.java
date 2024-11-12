@@ -29,6 +29,8 @@ public class BugTest {
 
         JsonPath js = new JsonPath(createIssueResponse);
         String issueId = js.getString("id");
+        System.out.println(issueId);
+
 
     }
 
