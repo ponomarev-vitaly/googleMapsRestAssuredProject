@@ -13,6 +13,7 @@ public class OAuthTest {
                 .post("https://rahulshettyacademy.com/oauthapi/oauth2/resourceOwner/token").asString();
 
     System.out.println(response);
+
     }
 
 }
