@@ -4,7 +4,7 @@ import io.restassured.RestAssured;
 
 public class BugTest {
     public static void main(String[] args) {
-        RestAssured.baseURI="";
+        RestAssured.baseURI="https://mrgraymatter-team.atlassian.net";
     }
 
 }
