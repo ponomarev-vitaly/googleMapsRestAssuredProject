@@ -16,7 +16,7 @@ public class BugTest {
                         "        \"project\": {\n" +
                         "            \"key\": \"SCRUM\"\n" +
                         "        },\n" +
-                        "        \"summary\": \"Links are not working - automation\",\n" +
+                        "        \"summary\": \"Buttons are not working - automation\",\n" +
                         "        \"issuetype\": {\n" +
                         "            \"name\": \"Bug\"\n" +
                         "        }\n" +
@@ -30,6 +30,8 @@ public class BugTest {
         JsonPath js = new JsonPath(createIssueResponse);
         String issueId = js.getString("id");
         System.out.println(issueId);
+
+
 
 
     }
