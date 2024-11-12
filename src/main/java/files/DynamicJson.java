@@ -17,6 +17,9 @@ public class DynamicJson {
                 .then().assertThat().statusCode(200)
                 .extract().response().asString();
         JsonPath js = ReUsableMethods.rawToJson(response);
+        String id = js.get("ID");
+        System.out.println(id);
+
 
 
     }
