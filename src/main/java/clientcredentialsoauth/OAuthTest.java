@@ -1,5 +1,7 @@
 package clientcredentialsoauth;
 
+import io.restassured.path.json.JsonPath;
+
 import static io.restassured.RestAssured.given;
 
 public class OAuthTest {
@@ -13,6 +15,10 @@ public class OAuthTest {
                 .post("https://rahulshettyacademy.com/oauthapi/oauth2/resourceOwner/token").asString();
 
     System.out.println(response);
+
+    JsonPath js = new JsonPath(response);
+    String accessToken = js.getString("access_token");
+
 
     }
 
