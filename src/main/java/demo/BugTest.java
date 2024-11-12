@@ -16,7 +16,7 @@ public class BugTest {
                         "        \"project\": {\n" +
                         "            \"key\": \"SCRUM\"\n" +
                         "        },\n" +
-                        "        \"summary\": \"Dropdowns are not working.\",\n" +
+                        "        \"summary\": \"Links are not working - automation\",\n" +
                         "        \"issuetype\": {\n" +
                         "            \"name\": \"Bug\"\n" +
                         "        }\n" +
