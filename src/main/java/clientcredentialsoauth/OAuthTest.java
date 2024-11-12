@@ -19,12 +19,12 @@ public class OAuthTest {
     JsonPath js = new JsonPath(response);
     String accessToken = js.getString("access_token");
 
-        String response2 = given()
+    String response2 = given()
                 .queryParams("access_token", accessToken)
                 .when().log().all()
                 .get("https://rahulshettyacademy.com/oauthapi/getCourseDetails?access_token=MF3cZKSVa5Yb92HoZ5tDtQ==").asString();
 
-        System.out.println(response2);
+    System.out.println(response2);
 
     }
 
