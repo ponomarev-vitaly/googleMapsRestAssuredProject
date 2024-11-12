@@ -22,6 +22,21 @@ public class DynamicJson {
         System.out.println(id);
     }
 
+    @Test(dataProvider = "BooksData")
+    public void deleteBook(String isbn, String aisle){
+        RestAssured.baseURI="http://216.10.245.166";
+        String response = given().header("Content-Type", "application/json")
+                .body(Payload.Deletebook(isbn,aisle))
+                .when()
+                .delete("/Library/DeleteBook.php")
+                .then().assertThat().statusCode(200)
+                .extract().response().asString();
+        // JsonPath js = ReUsableMethods.rawToJson(response);
+        System.out.println(response.toString());
+        // String id = js.get("ID");
+        // System.out.println(id);
+    }
+
     @DataProvider(name = "BooksData")
     public Object[][] getData(){
         return new Object[][]{{"ojfwty", "9363"}, {"coffee", "4235"}, {"akmfet", "533"}};
