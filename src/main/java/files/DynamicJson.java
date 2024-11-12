@@ -9,10 +9,10 @@ import static io.restassured.RestAssured.given;
 
 public class DynamicJson {
     @Test(dataProvider = "BooksData")
-    public void addBook(){
+    public void addBook(String isbn, String aisle){
         RestAssured.baseURI="http://216.10.245.166";
         String response = given().header("Content-Type","application/json")
-                .body(Payload.Addbook("aisle", "8888"))
+                .body(Payload.Addbook(isbn,aisle))
                 .when()
                 .post("/Library/Addbook.php")
                 .then().assertThat().statusCode(200)
