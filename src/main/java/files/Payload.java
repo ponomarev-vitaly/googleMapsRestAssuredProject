@@ -48,7 +48,7 @@ public class Payload {
                 "}" + "";
     }
 
-    public static String Addbook()
+    public static String Addbook(String isbn, String aisle)
     {
         String payload="{\r\n" +
                 "\r\n" +
