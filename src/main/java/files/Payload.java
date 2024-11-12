@@ -53,8 +53,8 @@ public class Payload {
         String payload="{\r\n" +
                 "\r\n" +
                 "\"name\":\"Learn Appium Automation with Java\",\r\n" +
-                "\"isbn\":\"bczd\",\r\n" +
-                "\"aisle\":\"2270\",\r\n" +
+                "\"isbn\":\""+isbn+"\",\r\n" +
+                "\"aisle\":\""+aisle+"\",\r\n" +
                 "\"author\":\"John Foe\"\r\n" +
                 "}\r\n" +
                 " \r\n" +
