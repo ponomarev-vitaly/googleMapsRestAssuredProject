@@ -1,12 +1,19 @@
 package pojo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+
 
 public class GetCourse {
+
+
     private String url;
     private String services;
     private String expertise;
     private Courses Courses;
     private String instructor;
-    private String linkedin;
+    private String linkedIn;
 
     public String getUrl() {
         return url;
@@ -48,12 +55,12 @@ public class GetCourse {
         this.instructor = instructor;
     }
 
-    public String getLinkedin() {
-        return linkedin;
+    public String getlinkedIn() {
+        return linkedIn;
     }
 
-    public void setLinkedin(String linkedin) {
-        this.linkedin = linkedin;
+    public void setlinkedIn(String linkedIn) {
+        this.linkedIn = linkedIn;
     }
 
 

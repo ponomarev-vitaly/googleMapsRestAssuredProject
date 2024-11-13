@@ -20,13 +20,23 @@ public class OAuthTest {
     JsonPath js = new JsonPath(response);
     String accessToken = js.getString("access_token");
 
-    GetCourse response2 = given()
+    String response2String = given()
                 .queryParams("access_token", accessToken)
                 .when().log().all()
-                .get("https://rahulshettyacademy.com/oauthapi/getCourseDetails?access_token=MF3cZKSVa5Yb92HoZ5tDtQ==").as(GetCourse.class);
+                .get("https://rahulshettyacademy.com/oauthapi/getCourseDetails").asString();
 
-    System.out.println(response2.getLinkedin());
-    System.out.println(response2.getInstructor());
+    System.out.println(response2String);
+
+    // Checking for the "error" field
+    JsonPath jsonResponse = new JsonPath(response2String);
+    if (jsonResponse.get("error") != null) {
+        System.out.println("Error in response: " + jsonResponse.getString("error"));
+    } else {
+    // Deserialization in the GetCourse object
+        GetCourse course = jsonResponse.getObject("", GetCourse.class);
+        System.out.println(course.getlinkedIn());
+        System.out.println(course.getInstructor());
+    }
 
 
     }
