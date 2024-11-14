@@ -1,16 +1,22 @@
 package clientcredentialsoauth;
 
 import io.restassured.path.json.JsonPath;
+import org.testng.Assert;
 import pojo.Api;
 import pojo.GetCourse;
 import pojo.WebAutomation;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static io.restassured.RestAssured.given;
 
 public class OAuthTest {
     public static void main(String[] args) {
+
+    String[] courseTitles = {"Selenium Webdriver Java", "Cypress", "Protractor"};
+
     String response = given()
                 .formParams("client_id", "692183103107-p0m7ent2hk7suguv4vq22hjcfhcr43pj.apps.googleusercontent.com")
                 .formParams("client_secret", "erZOWM9g3UtwNRj340YYaK_W")
@@ -50,10 +56,16 @@ public class OAuthTest {
             }
         }
 
+        ArrayList<String> a = new ArrayList<String>();
         List<WebAutomation> webAutomationCourse = course.getCourses().getWebAutomation();
+
         for(int n=0;n<webAutomationCourse.size();n++){
-            System.out.println(webAutomationCourse.get(n).getCourseTitle());
+            // System.out.println(webAutomationCourse.get(n).getCourseTitle());
+            a.add(webAutomationCourse.get(n).getCourseTitle());
         }
+
+        List<String> expectedList = Arrays.asList(courseTitles);
+        Assert.assertTrue(a.equals(expectedList));
 
 
     }
