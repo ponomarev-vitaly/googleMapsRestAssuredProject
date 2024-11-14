@@ -1,5 +1,7 @@
 package pojo;
 
+import java.util.List;
+
 public class AddPlace {
     private int accuracy;
     private String name;
@@ -8,7 +10,7 @@ public class AddPlace {
     private String website;
     private String language;
     private Location location;
-    private String types;
+    private List<String> types;
 
 
 
