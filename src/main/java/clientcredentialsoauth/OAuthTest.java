@@ -3,6 +3,7 @@ package clientcredentialsoauth;
 import io.restassured.path.json.JsonPath;
 import pojo.Api;
 import pojo.GetCourse;
+import pojo.WebAutomation;
 
 import java.util.List;
 
@@ -47,6 +48,11 @@ public class OAuthTest {
             if(apiCourse.get(i).getCourseTitle().equalsIgnoreCase("SoapUI Webservices testing")){
                 System.out.println(apiCourse.get(i).getPrice());
             }
+        }
+
+        List<WebAutomation> webAutomationCourse = course.getCourses().getWebAutomation();
+        for(int n=0;n<webAutomationCourse.size();n++){
+            System.out.println(webAutomationCourse.get(n).getCourseTitle());
         }
 
 
