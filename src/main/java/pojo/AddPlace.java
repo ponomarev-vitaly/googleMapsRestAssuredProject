@@ -7,7 +7,9 @@ public class AddPlace {
     private String address;
     private String website;
     private String language;
-    private String location;
+    private Location location;
+    private String types;
+
 
 
 
