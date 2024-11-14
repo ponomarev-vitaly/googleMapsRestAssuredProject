@@ -2,6 +2,9 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import pojo.AddPlace;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static io.restassured.RestAssured.given;
 
 public class serializeTest {
@@ -16,7 +19,10 @@ public class serializeTest {
         p.setAddress("29, side layout, cohen 09");
         p.setWebsite("https://rahulshettyacademy.com");
         p.setLanguage("French-IN");
-
+        List<String> myList = new ArrayList<String>();
+        myList.add("shoe park");
+        myList.add("shop");
+        p.setTypes(myList);
 
 
 
