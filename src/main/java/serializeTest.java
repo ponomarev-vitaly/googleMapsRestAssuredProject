@@ -32,7 +32,7 @@ public class serializeTest {
         p.setLocation(l);
 
         Response res = given().queryParam("key", "qaclick123")
-                .body("")
+                .body(p)
                 .when().post("maps/api/place/add/json")
                 .then().assertThat().statusCode(200)
                 .extract().response();
