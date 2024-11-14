@@ -1,7 +1,10 @@
 package clientcredentialsoauth;
 
 import io.restassured.path.json.JsonPath;
+import pojo.Api;
 import pojo.GetCourse;
+
+import java.util.List;
 
 import static io.restassured.RestAssured.given;
 
@@ -36,8 +39,18 @@ public class OAuthTest {
         GetCourse course = jsonResponse.getObject("", GetCourse.class);
         System.out.println(course.getlinkedIn());
         System.out.println(course.getInstructor());
-    }
 
+        System.out.println(course.getCourses().getApi().get(1).getCourseTitle());
+
+        List<Api> apiCourse = course.getCourses().getApi();
+        for(int i=0;i<apiCourse.size();i++){
+            if(apiCourse.get(i).getCourseTitle().equalsIgnoreCase("SoapUI Webservices testing")){
+                System.out.println(apiCourse.get(i).getPrice());
+            }
+        }
+
+
+    }
 
     }
 
