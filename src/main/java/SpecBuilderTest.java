@@ -1,5 +1,8 @@
 import io.restassured.RestAssured;
+import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import pojo.AddPlace;
 import pojo.Location;
 
@@ -29,8 +32,14 @@ public class SpecBuilderTest {
         Location l = new Location();
         l.setLat(-38.383494);
         l.setLng(33.427362);
-        p.setLocation(l);
 
+        RequestSpecification req = new RequestSpecBuilder()
+                .setBaseUri("https://rahulshettyacademy.com")
+                .addQueryParam("key", "qaclick123")
+                .setContentType(ContentType.JSON)
+                .build();
+
+        p.setLocation(l);
         Response res = given().log().all().queryParam("key", "qaclick123")
                 .body(p)
                 .when().post("maps/api/place/add/json")
