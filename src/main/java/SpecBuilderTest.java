@@ -1,8 +1,10 @@
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import io.restassured.specification.ResponseSpecification;
 import pojo.AddPlace;
 import pojo.Location;
 
@@ -32,6 +34,9 @@ public class SpecBuilderTest {
         Location l = new Location();
         l.setLat(-38.383494);
         l.setLng(33.427362);
+        p.setLocation(l);
+
+        ResponseSpecification resspec = new ResponseSpecBuilder().expectStatusCode(200).expectContentType(ContentType.JSON).build();
 
         RequestSpecification req = new RequestSpecBuilder()
                 .setBaseUri("https://rahulshettyacademy.com")
@@ -39,14 +44,9 @@ public class SpecBuilderTest {
                 .setContentType(ContentType.JSON)
                 .build();
 
-        p.setLocation(l);
-        Response res = given().log().all().queryParam("key", "qaclick123")
-                .body(p)
-                .when().post("maps/api/place/add/json")
-                .then().assertThat().statusCode(200)
-                .extract().response();
+        Response response = given().spec(req).body(p).when().post("maps/api/place/add/json").then().spec(resspec).extract().response();
 
-        String responseString = res.asString();
+        String responseString = response.asString();
         System.out.println(responseString);
 
     }
