@@ -8,7 +8,7 @@ import java.util.List;
 
 import static io.restassured.RestAssured.given;
 
-public class serializeTest {
+public class SpecBuilderTest {
     public static void main(String[] args) {
         RestAssured.baseURI = "https://rahulshettyacademy.com";
 
